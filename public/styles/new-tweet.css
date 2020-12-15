@@ -1,0 +1,25 @@
+#tweet-text {
+  border: none;
+  border-bottom: 4px solid gray;
+  font-size: 20px;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 1em;
+  background-color: #f4f1ec;
+}
+
+/* tweet button + text */
+.tweet-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet-bottom > button {
+  background-color: #4056A1;
+  color: #FFFFFF;
+  font-family: Bungee, sans-serif;
+}
+
+.counter {
+  color: black;
+}
