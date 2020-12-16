@@ -64,9 +64,22 @@ $(document).ready(function() {
     return $tweet;
   };
 
-  renderTweets(data);
+  // ajax get request
+  const loadTweets = function() {
+    const url = 'http://localhost:8080/tweets'
+    $.ajax({
+      method: 'GET',
+      url: url,
+    })
+      .then((result) => {
+        renderTweets(result);
+      })
+      .catch((err) => console.log(err));
+  };
 
-  // ajax request
+  // renderTweets(data);
+
+  // On form submit, do ajax post request
   $('#new-tweet-form').on('submit', function (event) {
     // stop the form from being submitted
     event.preventDefault();
@@ -78,8 +91,9 @@ $(document).ready(function() {
       url: '/tweets',
       data: $textBoxSerial
     })
-      .done(function (msg) {
+      .then(response => {
         console.log('success')
+        loadTweets(); // ajax get request
       })
       .catch((err) => {
         console.log(err)
