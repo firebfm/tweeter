@@ -5,6 +5,7 @@ article.tweet {
   margin-top: 2em;
   padding: 1em;
   margin-bottom: 2em;
+  opacity: 0.8;
 }
 
 article.tweet > header {
@@ -44,6 +45,7 @@ article.tweet > footer {
 
 article.tweet:hover{
   box-shadow: 10px 10px #8e9fce;
+  opacity: 1;
 }
 
 article.tweet:hover .handle {
