@@ -38,7 +38,7 @@ $(document).ready(function() {
   };
 
   const createTweetElement = function(tweet) {
-    const time = new Date(tweet.created_at).toLocaleString();
+    const date = new Date(tweet.created_at).toLocaleString();
 
     let $tweet = `<article class="tweet">
                     <header>
@@ -53,7 +53,7 @@ $(document).ready(function() {
                     </p>
                     <div class="line"></div>
                     <footer>
-                      <span>${time}</span>
+                      <span>${date}</span>
                       <div class="icons">
                         <i class="fas fa-flag"></i>
                         <i class="fas fa-retweet"></i>
@@ -65,4 +65,25 @@ $(document).ready(function() {
   };
 
   renderTweets(data);
+
+  // ajax request
+  $('#new-tweet-form').on('submit', function (event) {
+    // stop the form from being submitted
+    event.preventDefault();
+    const $textBox = $(this).children('#tweet-text')
+    const $textBoxSerial = $(this).children('#tweet-text').serialize();
+
+    $.ajax({
+      method: 'POST',
+      url: '/tweets',
+      data: $textBoxSerial
+    })
+      .done(function (msg) {
+        console.log('success')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    $textBox.val('');
+  });
 });
