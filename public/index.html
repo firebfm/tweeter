@@ -28,8 +28,11 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span style="font-family:Bungee, sans-serif;">tweeter</span>Write a new tweet
-      <i class="fas fa-angle-double-down"></i>
+      <span style="font-family:Bungee, sans-serif;">tweeter</span>
+      <div>
+        <span>Write a new tweet</span>
+        <i class="fas fa-angle-double-down"></i>
+      </div>
     </nav>
     <header id="first-header">
       <div>
@@ -41,7 +44,7 @@
       </div>
     </header>
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main class="container" id="tweets-container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST">
