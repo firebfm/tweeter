@@ -1,0 +1,51 @@
+article.tweet {
+  display: flex;
+  flex-direction: column;
+  border: solid black 3px;
+  margin-top: 2em;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+
+article.tweet > header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+.display-name {
+  margin-left: 15px;
+  color: darkgreen;
+}
+
+.handle {
+  color: #8e9fce;
+  visibility: hidden;
+}
+
+.line {
+  border-bottom: black 4px solid;
+}
+
+article.tweet > footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5em;
+}
+
+.icons {
+  color: navy;
+  font-size: 20px;
+}
+
+.icons > .fas {
+  padding-right: 10px;
+}
+
+article.tweet:hover{
+  box-shadow: 10px 10px #8e9fce;
+}
+
+article.tweet:hover .handle {
+  visibility: visible;
+}
