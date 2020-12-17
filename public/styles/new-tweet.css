@@ -7,6 +7,7 @@
   width: 100%;
   margin-bottom: 1em;
   background-color: #f4f1ec;
+  resize: none;
 }
 
 /* tweet button + text */

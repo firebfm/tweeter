@@ -6,6 +6,7 @@ article.tweet {
   padding: 1em;
   margin-bottom: 2em;
   opacity: 0.8;
+  overflow-wrap: break-word;
 }
 
 article.tweet > header {
@@ -21,7 +22,7 @@ article.tweet > header {
 
 .handle {
   color: #8e9fce;
-  visibility: hidden;
+  filter: blur(0.5px);
 }
 
 .line {
@@ -37,6 +38,7 @@ article.tweet > footer {
 .icons {
   color: navy;
   font-size: 20px;
+  visibility: hidden;
 }
 
 .icons > .fas {
@@ -48,6 +50,10 @@ article.tweet:hover{
   opacity: 1;
 }
 
-article.tweet:hover .handle {
+article.tweet:hover .icons {
   visibility: visible;
+}
+
+article.tweet:hover .handle {
+  filter: blur(0);
 }
