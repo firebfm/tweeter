@@ -30,6 +30,13 @@ $(document).ready(function() {
     }
   ]
 
+  // escaping user input to prevent XSS
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
   const renderTweets = function(tweetsArr) {
     $('#load-tweets-section').empty();
     for (let tweet of tweetsArr) {
@@ -44,13 +51,13 @@ $(document).ready(function() {
     let $tweet = `<article class="tweet">
                     <header>
                       <div class="avatar">
-                        <img src="${tweet.user.avatars}" width="50" height="50">
-                        <span class="display-name">${tweet.user.name}</span>
+                        <img src="${escape(tweet.user.avatars)}" width="50" height="50">
+                        <span class="display-name">${escape(tweet.user.name)}</span>
                       </div>
-                      <span class="handle">${tweet.user.handle}</span>
+                      <span class="handle">${escape(tweet.user.handle)}</span>
                     </header>
                     <p>
-                      ${tweet.content.text}
+                      ${escape(tweet.content.text)}
                     </p>
                     <div class="line"></div>
                     <footer>
@@ -106,6 +113,7 @@ $(document).ready(function() {
     })
       .then(response => {
         console.log('success')
+        $(this).children('div').children('.counter').val(charMax)
         loadTweets(); // ajax get request without refreshing
       })
       .catch((err) => {
