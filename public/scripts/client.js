@@ -86,6 +86,18 @@ $(document).ready(function() {
     const $textBox = $(this).children('#tweet-text')
     const $textBoxSerial = $(this).children('#tweet-text').serialize();
 
+    // form validation
+    const charMax = 140
+    const charLeft = Number($(this).children('div').children('.counter').val())
+
+    if(charLeft === charMax) {
+      return alert("Error: Empty string detected");
+    }
+
+    if(charLeft < 0) {
+      return alert(`Error: Exceeded ${charMax} character limit`);
+    }
+
     $.ajax({
       method: 'POST',
       url: '/tweets',
