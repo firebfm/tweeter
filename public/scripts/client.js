@@ -31,9 +31,10 @@ $(document).ready(function() {
   ]
 
   const renderTweets = function(tweetsArr) {
+    $('#load-tweets-section').empty();
     for (let tweet of tweetsArr) {
       const $tweet = createTweetElement(tweet)
-      $('#tweets-container').append($tweet);
+      $('#load-tweets-section').append($tweet);
     }
   };
 
@@ -105,11 +106,13 @@ $(document).ready(function() {
     })
       .then(response => {
         console.log('success')
-        loadTweets(); // ajax get request
+        loadTweets(); // ajax get request without refreshing
       })
       .catch((err) => {
         console.log(err)
       })
     $textBox.val('');
   });
+  // load initial tweets so html won't be empty
+  loadTweets();
 });
