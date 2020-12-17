@@ -29,3 +29,18 @@
 .negativeNum {
   color: red;
 }
+
+.error-msg {
+  display: none;
+  color: red;
+  border: solid red 4px;
+  margin-top: 40px;
+}
+
+.error-msg > p {
+  margin-left: 20px;
+}
+
+.error-msg > p > span {
+  padding: 0px 15px;
+}

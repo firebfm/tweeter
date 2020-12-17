@@ -91,6 +91,9 @@ $(document).ready(function() {
   $('#new-tweet-form').on('submit', function (event) {
     // stop the form from being submitted
     event.preventDefault();
+    let $errorMsg = $('.error-msg');
+    $errorMsg.slideUp();
+
     const $textBox = $(this).children('#tweet-text')
     const $textBoxSerial = $(this).children('#tweet-text').serialize();
 
@@ -98,12 +101,14 @@ $(document).ready(function() {
     const charMax = 140
     const charLeft = Number($(this).children('div').children('.counter').val())
 
-    if(charLeft === charMax) {
-      return alert("Error: Empty string detected");
+    if (charLeft === charMax) {
+      $errorMsg.slideDown();
+      return $errorMsg.children('p').children('span').text(`Error: Empty string detected`);
     }
 
-    if(charLeft < 0) {
-      return alert(`Error: Exceeded ${charMax} character limit`);
+    if (charLeft < 0) {
+      $errorMsg.slideDown();
+      return $errorMsg.children('p').children('span').text(`Error: Exceeded ${charMax} character limit`);
     }
 
     $.ajax({
