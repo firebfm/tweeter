@@ -15,3 +15,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## My Comment
+Finished in 4 days. First time learning about jQuery.
+
+## Final Product
+
+!["Screenshot of new tweet error"](https://github.com/firebfm/tweeter/blob/master/docs/tweet-error.png)
+!["Screenshot of responsive page for mobile"](https://github.com/firebfm/tweeter/blob/master/docs/tweet-mobile.jpg)
