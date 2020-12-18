@@ -28,21 +28,21 @@ $(document).ready(function() {
       },
       "created_at": 1461113959088
     }
-  ]
+  ];
 
   // escaping user input to prevent XSS
   const escape =  function(str) {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
-  }
+  };
 
   // loop through database and create tweets
   // prepend for lastest date approach
   const renderTweets = function(tweetsArr) {
     $('#load-tweets-section').empty();
     for (let tweet of tweetsArr) {
-      const $tweet = createTweetElement(tweet)
+      const $tweet = createTweetElement(tweet);
       $('#load-tweets-section').prepend($tweet);
     }
   };
@@ -71,13 +71,13 @@ $(document).ready(function() {
                         <i class="fas fa-heart"></i>
                       </div>
                     </footer>
-                  </article>`
+                  </article>`;
     return $tweet;
   };
 
   // ajax get request
   const loadTweets = function() {
-    const url = 'http://localhost:8080/tweets'
+    const url = 'http://localhost:8080/tweets';
     $.ajax({
       method: 'GET',
       url: url,
@@ -89,7 +89,7 @@ $(document).ready(function() {
   };
 
   // On form submit, do ajax post request
-  $('#new-tweet-form').on('submit', function (event) {
+  $('#new-tweet-form').on('submit', function(event) {
     // stop the form from being submitted
     event.preventDefault();
     let $errorMsg = $('.error-msg');
@@ -97,12 +97,12 @@ $(document).ready(function() {
 
     // input box
     // serialize - turns into query string format, used for POST
-    const $textBox = $(this).children('#tweet-text')
+    const $textBox = $(this).children('#tweet-text');
     const $textBoxSerial = $(this).children('#tweet-text').serialize();
 
     // form validation
-    const charMax = 140
-    const charLeft = Number($(this).children('div').children('.counter').val())
+    const charMax = 140;
+    const charLeft = Number($(this).children('div').children('.counter').val());
 
     if (charLeft === charMax) {
       $errorMsg.slideDown();
@@ -120,14 +120,13 @@ $(document).ready(function() {
       url: '/tweets',
       data: $textBoxSerial
     })
-      .then(response => {
-        console.log('success')
-        $(this).children('div').children('.counter').val(charMax)
+      .then(() => {
+        $(this).children('div').children('.counter').val(charMax);
         loadTweets(); // ajax get request without refreshing
       })
       .catch((err) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
     $textBox.val('');
   });
   // load initial tweets so html won't be empty
