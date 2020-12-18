@@ -15,6 +15,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+- Body-parser
+- Chance
 
 ## My Comment
 Finished in 4 days. First time learning about jQuery.
