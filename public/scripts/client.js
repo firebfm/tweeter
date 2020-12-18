@@ -37,14 +37,17 @@ $(document).ready(function() {
     return div.innerHTML;
   }
 
+  // loop through database and create tweets
+  // prepend for lastest date approach
   const renderTweets = function(tweetsArr) {
     $('#load-tweets-section').empty();
     for (let tweet of tweetsArr) {
       const $tweet = createTweetElement(tweet)
-      $('#load-tweets-section').append($tweet);
+      $('#load-tweets-section').prepend($tweet);
     }
   };
 
+  // generate single tweet html
   const createTweetElement = function(tweet) {
     const date = new Date(tweet.created_at).toLocaleString();
 
@@ -85,8 +88,6 @@ $(document).ready(function() {
       .catch((err) => console.log(err));
   };
 
-  // renderTweets(data);
-
   // On form submit, do ajax post request
   $('#new-tweet-form').on('submit', function (event) {
     // stop the form from being submitted
@@ -94,6 +95,8 @@ $(document).ready(function() {
     let $errorMsg = $('.error-msg');
     $errorMsg.slideUp();
 
+    // input box
+    // serialize - turns into query string format, used for POST
     const $textBox = $(this).children('#tweet-text')
     const $textBoxSerial = $(this).children('#tweet-text').serialize();
 
@@ -111,6 +114,7 @@ $(document).ready(function() {
       return $errorMsg.children('p').children('span').text(`Error: Exceeded ${charMax} character limit`);
     }
 
+    // post a tweet
     $.ajax({
       method: 'POST',
       url: '/tweets',
